@@ -1,0 +1,325 @@
+:root {
+    --purple-primary: #6346f6;
+    --purple-gradient: linear-gradient(135deg, #6346f6 0%, #8b5cf6 100%);
+    --navy-footer: #0a1128;
+    --bg-faint-blue: #f4f6ff;
+}
+
+/* ========================================================
+   GLOBAL BASE STYLES
+   ======================================================== */
+body {
+    font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: #2d3748;
+    background-color: #ffffff;
+    font-size: 0.95rem;
+}
+.hero-section{
+	min-height:800px;
+}
+
+
+/* Typography */
+.section-title { 
+    font-size: 1.75rem; 
+    font-weight: 700; 
+}
+.hero-title { 
+    font-size: 2.75rem; 
+    line-height: 1.25; 
+}
+.hero-subtitle { 
+    font-size: 1.05rem; 
+    color: #4a5568; 
+}
+
+.font-500 { font-weight: 500; }
+.font-600 { font-weight: 600; }
+
+/* Gradients & Colors */
+.text-purple-gradient {
+    background: var(--purple-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.btn-primary-gradient {
+    background: var(--purple-gradient);
+    color: #ffffff !important;
+    border: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-primary-gradient:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(99, 70, 246, 0.35);
+}
+
+.text-purple { color: var(--purple-primary) !important; }
+.bg-purple { background-color: var(--purple-primary) !important; }
+.bg-navy { background-color: var(--navy-footer) !important; }
+.bg-faint-blue { background-color: var(--bg-faint-blue) !important; }
+
+/* ========================================================
+   ICON CIRCLES
+   ======================================================== */
+.icon-circle {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+}
+
+.icon-bg-blue { background-color: #e0f2fe; color: #0284c7; }
+.icon-bg-orange { background-color: #ffedd5; color: #ea580c; }
+.icon-bg-purple { background-color: #f3e8ff; color: #9333ea; }
+.icon-bg-teal { background-color: #ccfbf1; color: #0d9488; }
+.icon-bg-yellow { background-color: #fef3c7; color: #d97706; }
+.icon-bg-pink { background-color: #fce7f3; color: #db2777; }
+
+/* 5 Column Grid Layout */
+@media (min-width: 992px) {
+    .col-lg-2-4 {
+        flex: 0 0 auto;
+        width: 20%;
+    }
+}
+
+/* Navbar */
+.tagline { font-size: 0.68rem; margin-top: -2px; }
+.custom-nav-links .nav-link {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #4a5568;
+    padding-left: 1.1rem !important;
+    padding-right: 1.1rem !important;
+}
+.custom-nav-links .nav-link.active {
+    color: var(--purple-primary);
+    font-weight: 700;
+}
+
+/* ========================================================
+   HERO BANNER
+   ======================================================== */
+.hero-section {
+    position: relative;
+    padding-top: 130px;
+    padding-bottom: 4.5rem;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+}
+
+.search-floating-card {
+    background: #ffffff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.search-floating-card .form-control,
+.search-floating-card .form-select {
+    font-size: 0.9rem;
+}
+
+/* Feature Cards */
+.feature-box {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.feature-box:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06) !important;
+}
+
+/* ========================================================
+   DESTINATION CARDS
+   ======================================================== */
+.destination-card {
+    position: relative;
+    height: 260px;
+    border-radius: 1rem;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+.destination-card:hover {
+    transform: translateY(-4px);
+}
+.destination-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.destination-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.05) 30%, rgba(0,0,0,0.85) 100%);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.rating-badge {
+    align-self: flex-end;
+    background: rgba(0, 0, 0, 0.65);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 12px;
+}
+
+/* ========================================================
+   TRAVELLER CATEGORY CARDS (EQUAL HEIGHT FIX)
+   ======================================================== */
+.traveller-swiper {
+    padding-bottom: 45px !important;
+}
+
+.traveller-swiper .swiper-wrapper {
+    display: flex !important;
+    align-items: stretch !important; /* Force all slides to equal height */
+}
+
+.traveller-swiper .swiper-slide {
+    height: auto !important;
+    display: flex !important;
+}
+
+.traveller-card {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100%;
+    height: 100% !important; /* Force fill slide height */
+    background: #ffffff;
+    border-radius: 1rem;
+    overflow: hidden;
+    border: 1px solid #edf2f7;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.traveller-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Strict Image Box Dimensions */
+.traveller-card .img-wrapper {
+    width: 100%;
+    height: 160px !important;
+    min-height: 160px !important;
+    max-height: 160px !important;
+    overflow: hidden;
+    position: relative;
+    background-color: #f1f5f9;
+}
+
+.traveller-card .img-wrapper img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important; /* Standardize aspect ratio */
+    transition: transform 0.4s ease;
+}
+
+.traveller-card:hover .img-wrapper img {
+    transform: scale(1.06);
+}
+
+/* Card Body Flexbox Alignment */
+.traveller-card .card-body-content {
+    padding: 1rem;
+    flex-grow: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+}
+
+.cursor-pointer { 
+    cursor: pointer; 
+}
+
+/* Swiper Custom Controls */
+.swiper-button-next-custom,
+.swiper-button-prev-custom {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--purple-primary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.swiper-button-next-custom:hover,
+.swiper-button-prev-custom:hover {
+    background: var(--purple-primary);
+    color: #ffffff;
+}
+
+/* ========================================================
+   STEP BUILDER SECTION
+   ======================================================== */
+.travel-doodle-bg {
+    background-color: #f4f6ff;
+    background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%236346f6' fill-opacity='0.05'%3E%3Cpath d='M0 0h80v80H0z' fill='none'/%3E%3Cpath d='M10 20l5-5 5 5-2 2-3-3-3 3-2-2zm40 40l5-5 5 5-2 2-3-3-3 3-2-2zM25 60a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm30-40a5 5 0 1 0 0-10 5 5 0 0 0 0 10zM15 35h10v10H15V35zm35 0h10v10H50V35z'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.trip-build-container {
+    position: relative;
+    padding: 20px 0;
+}
+
+.step-connector-line {
+    position: absolute;
+    top: 36px;
+    left: 10%;
+    right: 10%;
+    height: 3px;
+    background-image: linear-gradient(90deg, #8b5cf6 50%, transparent 50%);
+    background-size: 16px 3px;
+    z-index: 0;
+    animation: lineMove 1s linear infinite;
+}
+
+@keyframes lineMove {
+    0% { background-position: 0 0; }
+    100% { background-position: 32px 0; }
+}
+
+.step-circle {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    margin: 0 auto 1rem auto;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+    transition: transform 0.3s ease;
+}
+
+.step-circle:hover {
+    transform: scale(1.1);
+}
+
+/* ========================================================
+   FOOTER
+   ======================================================== */
+.footer-links a {
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.88rem;
+    line-height: 2.1;
+    transition: color 0.2s ease;
+}
+.footer-links a:hover { 
+    color: #ffffff; 
+}

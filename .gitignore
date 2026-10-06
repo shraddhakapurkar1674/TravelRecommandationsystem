@@ -1,0 +1,20 @@
+# Java / Maven / Eclipse / STS
+target/
+bin/
+.classpath
+.project
+.settings/
+.metadata/
+.springBeans
+*.class
+*.war
+*.log
+
+# Node (if used)
+node_modules/
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

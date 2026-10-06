@@ -1,0 +1,191 @@
+@charset "UTF-8";
+:root {
+    --bg-gradient: linear-gradient(135deg, #f0f3fe 0%, #e8eeff 50%, #f4f0ff 100%);
+    --glass-bg: rgba(255, 255, 255, 0.75);
+    --glass-border: rgba(255, 255, 255, 0.9);
+    --glass-shadow: 0 8px 24px 0 rgba(99, 70, 246, 0.06);
+    --primary-color: #6346f6;
+    --text-main: #2b2f3e;
+}
+
+body.dashboard-body {
+    background: var(--bg-gradient);
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+    color: var(--text-main);
+}
+
+.dashboard-wrapper { display: flex; width: 100%; }
+.main-content { flex: 1; padding: 1.5rem 2rem; overflow-x: hidden; }
+
+/* Glass Cards */
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    box-shadow: var(--glass-shadow);
+}
+
+.glass-topbar {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 14px;
+    padding: 0.6rem 1.2rem;
+}
+
+.search-input {
+    border-radius: 20px;
+    padding-left: 2.3rem;
+    background: rgba(243, 244, 248, 0.8);
+    border: 1px solid #e2e8f0;
+    font-size: 0.85rem;
+}
+
+.search-icon {
+    position: absolute;
+    left: 0.9rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94a3b8;
+    font-size: 0.85rem;
+}
+
+.avatar-circle {
+    width: 36px; height: 36px;
+    background: var(--primary-color);
+    color: #fff; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+}
+
+.metric-card { padding: 1.1rem; }
+.metric-label { font-size: 0.72rem; color: #64748b; font-weight: 600; display: block; }
+.metric-value { font-size: 1.35rem; font-weight: 800; margin: 0; }
+
+.icon-shape {
+    width: 42px; height: 42px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+}
+
+.bg-purple-soft { background: #f0eefd; } .text-purple { color: #6346f6; }
+.bg-indigo-soft { background: #eef2ff; } .text-indigo { color: #6366f1; }
+.bg-orange-soft { background: #fff7ed; } .text-orange { color: #f97316; }
+.bg-blue-soft   { background: #eff6ff; } .text-blue   { color: #3b82f6; }
+.bg-green-soft  { background: #f0fdf4; } .text-green  { color: #22c55e; }
+.bg-pink-soft   { background: #fdf2f8; } .text-pink   { color: #ec4899; }
+
+.inner-metric-box {
+    background: #ffffff; border-radius: 12px; border: 1px solid #f1f5f9;
+}
+
+.ranking-badge {
+    width: 20px; height: 20px; background: #6346f6; color: #fff;
+    border-radius: 50%; font-size: 0.68rem; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+}
+
+.item-thumb { width: 32px; height: 32px; border-radius: 8px; object-fit: cover; }
+.item-title { font-size: 0.78rem; font-weight: 700; color: #1e293b; margin: 0; }
+.user-avatar-initial {
+    width: 32px; height: 32px; border-radius: 50%; background: #e0e7ff;
+    color: #4338ca; display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 0.75rem;
+}
+
+.custom-glass-table th { font-size: 0.72rem; color: #64748b; border-bottom: 1px solid #e2e8f0; }
+.custom-glass-table td { font-size: 0.78rem; border-bottom: 1px solid #f1f5f9; padding: 0.6rem 0.4rem; }
+
+.status-badge-soft { padding: 3px 8px; border-radius: 6px; font-size: 0.68rem; font-weight: 700; }
+.badge-confirmed { background: #dcfce7; color: #15803d; }
+.badge-pending { background: #ffedd5; color: #c2410c; }
+/* =====================================================
+   HERO GREETING BANNER
+===================================================== */
+.dashboard-hero {
+    position: relative;
+    border-radius: 18px;
+    overflow: hidden;
+    padding: 1.8rem 2rem;
+    margin-bottom: 1.25rem;
+    min-height: 150px;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(120deg, rgba(30,42,94,0.88), rgba(61,47,120,0.75)),
+                url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1400&q=60') center/cover;
+    color: #fff;
+}
+.dashboard-hero h2 { font-weight: 800; margin-bottom: 0.25rem; }
+.dashboard-hero p { opacity: 0.9; margin-bottom: 0; font-size: 0.9rem; }
+
+/* =====================================================
+   CHART CARD
+===================================================== */
+.chart-select {
+    font-size: 0.78rem; border-radius: 10px; border: 1px solid #e2e8f0;
+    padding: 0.3rem 0.6rem; background: #fff; color: #475569;
+}
+.chart-canvas-wrap { position: relative; height: 260px; }
+
+/* =====================================================
+   QUICK ACTIONS
+===================================================== */
+.quick-action-btn {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 0.4rem; padding: 1rem 0.5rem; border-radius: 14px; text-decoration: none;
+    font-size: 0.78rem; font-weight: 700; transition: transform 0.15s ease;
+    border: none; cursor: pointer;
+}
+.quick-action-btn:hover { transform: translateY(-2px); }
+.quick-action-btn i { font-size: 1.2rem; }
+.qa-blue { background: #eef2ff; color: #4338ca; }
+.qa-purple { background: #f3e8ff; color: #7e22ce; }
+.qa-green { background: #dcfce7; color: #15803d; }
+.qa-orange { background: #ffedd5; color: #c2410c; }
+
+/* =====================================================
+   NOTIFICATIONS PANEL (ADMIN)
+===================================================== */
+.admin-notif-item { display: flex; gap: 0.6rem; padding: 0.55rem 0; border-bottom: 1px solid #f1f5f9; }
+.admin-notif-item:last-child { border-bottom: none; }
+.admin-notif-icon {
+    width: 34px; height: 34px; min-width: 34px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    background: #eef2ff; color: #4f46e5; font-size: 0.85rem;
+}
+.admin-notif-title { font-size: 0.78rem; font-weight: 700; color: #1e293b; margin: 0; }
+.admin-notif-msg { font-size: 0.72rem; color: #64748b; margin: 0; }
+.admin-notif-time { font-size: 0.65rem; color: #94a3b8; }
+.admin-notif-item.unread { background: rgba(99,70,246,0.05); border-radius: 10px; padding-left: 0.4rem; }
+
+/* =====================================================
+   RECENT DESTINATIONS TABLE
+===================================================== */
+.dest-thumb { width: 44px; height: 44px; border-radius: 10px; object-fit: cover; }
+.dest-status-active { background: #dcfce7; color: #15803d; padding: 3px 10px; border-radius: 20px; font-size: 0.68rem; font-weight: 700; }
+.dest-status-inactive { background: #f1f5f9; color: #64748b; padding: 3px 10px; border-radius: 20px; font-size: 0.68rem; font-weight: 700; }
+.dest-action-btn {
+    width: 30px; height: 30px; border-radius: 8px; border: 1px solid #e2e8f0;
+    background: #fff; color: #64748b; display: inline-flex; align-items: center;
+    justify-content: center; margin-right: 4px; text-decoration: none;
+}
+.dest-action-btn:hover { background: #eef2ff; color: #4338ca; }
+
+/* =====================================================
+   DONUT LEGEND
+===================================================== */
+.donut-wrap { display: flex; align-items: center; gap: 1.2rem; }
+.donut-legend { flex: 1; display: flex; flex-direction: column; gap: 0.45rem; }
+.donut-legend-item { display: flex; align-items: center; justify-content: space-between; font-size: 0.75rem; }
+.donut-legend-item .dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; margin-right: 6px; }
+.donut-total { text-align: center; }
+.donut-total h3 { margin: 0; font-size: 1.4rem; font-weight: 800; }
+.donut-total span { font-size: 0.7rem; color: #64748b; }
+.donut-canvas-wrap { position: relative; width: 140px; height: 140px; flex-shrink: 0; }
+.donut-center-label { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+
+.growth-tip {
+    background: #eef2ff; border-radius: 12px; padding: 0.8rem 1rem; font-size: 0.76rem;
+    color: #3730a3; display: flex; gap: 0.6rem; align-items: flex-start; margin-top: 0.9rem;
+}

@@ -1,0 +1,1537 @@
+/* =========================================================
+   DESTINATION DETAILS - GLASSMORPHISM
+   HTML / JSP / JS / BACKEND UNCHANGED
+========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    font-family:
+        "Poppins",
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    color: #1f2937;
+
+    background:
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(99, 102, 241, 0.22),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 90% 85%,
+            rgba(14, 165, 233, 0.18),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(255, 255, 255, 0.75),
+            transparent 60%
+        ),
+        linear-gradient(
+            135deg,
+            #eaf0ff 0%,
+            #f8fbff 48%,
+            #eefaf8 100%
+        );
+
+    background-attachment: fixed;
+}
+
+
+/* =========================================================
+   MAIN APP
+========================================================= */
+
+.app-layout {
+    width: 100%;
+    min-height: 100vh;
+}
+
+.destination-area {
+    position: relative;
+
+    width: calc(100% - 270px);
+    min-height: 100vh;
+
+    margin-left: 270px;
+    padding: 24px 28px 45px;
+}
+
+.destination-page {
+    width: 100%;
+    max-width: 1450px;
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   GLASS BASE
+========================================================= */
+
+.destination-top,
+.map-section,
+.gallery-section,
+.transport-section,
+.hotels-section,
+.extra-card,
+.info-card,
+.transport-card,
+.hotel-card {
+    border:
+        1px solid rgba(255, 255, 255, 0.70);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.68),
+            rgba(255, 255, 255, 0.38)
+        );
+
+    backdrop-filter: blur(22px) saturate(150%);
+    -webkit-backdrop-filter: blur(22px) saturate(150%);
+
+    box-shadow:
+        0 20px 50px rgba(31, 38, 135, 0.10),
+        inset 0 1px 0 rgba(255, 255, 255, 0.80);
+}
+
+
+/* =========================================================
+   BACK BUTTON
+========================================================= */
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+
+    margin-bottom: 18px;
+    padding: 10px 16px;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.75);
+
+    border-radius: 14px;
+
+    background:
+        rgba(255, 255, 255, 0.48);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 10px 30px rgba(31, 38, 135, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.80);
+
+    color: #334155;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.22s ease,
+        background 0.22s ease,
+        box-shadow 0.22s ease;
+}
+
+.back-button:hover {
+    transform: translateY(-2px);
+
+    background:
+        rgba(255, 255, 255, 0.70);
+
+    box-shadow:
+        0 14px 35px rgba(31, 38, 135, 0.13),
+        inset 0 1px 0 rgba(255, 255, 255, 0.90);
+}
+
+
+/* =========================================================
+   MAIN DESTINATION CARD
+========================================================= */
+
+.destination-top {
+    display: grid;
+
+    grid-template-columns:
+        minmax(330px, 0.85fr)
+        minmax(480px, 1.15fr);
+
+    gap: 24px;
+
+    width: 100%;
+    padding: 20px;
+
+    border-radius: 28px;
+}
+
+
+/* =========================================================
+   MAIN DESTINATION IMAGE
+========================================================= */
+
+.selected-image-container {
+    position: relative;
+
+    width: 100%;
+    height: 330px;
+    min-height: 330px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.75);
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.60),
+            rgba(241, 245, 249, 0.55)
+        );
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.85),
+        0 10px 30px rgba(31, 38, 135, 0.08);
+}
+
+#selectedDestinationImage {
+    display: block;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    max-width: none !important;
+    max-height: none !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    object-fit: contain !important;
+    object-position: center !important;
+
+    background: transparent !important;
+}
+
+.image-overlay {
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(15, 23, 42, 0.50),
+            rgba(15, 23, 42, 0.05) 50%,
+            transparent 75%
+        );
+}
+
+.selected-image-label {
+    position: absolute;
+
+    left: 18px;
+    right: 18px;
+    bottom: 16px;
+
+    z-index: 2;
+
+    color: #fff;
+}
+
+.selected-image-label small {
+    display: block;
+
+    margin-bottom: 3px;
+
+    font-size: 11px;
+    letter-spacing: 1.5px;
+
+    text-transform: uppercase;
+
+    opacity: 0.85;
+}
+
+.selected-image-label h2 {
+    margin: 0;
+
+    font-size: 22px;
+    font-weight: 700;
+
+    text-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+
+/* =========================================================
+   DESTINATION INFORMATION
+========================================================= */
+
+.destination-information {
+    min-width: 0;
+    padding: 8px 5px;
+}
+
+.location-line {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    margin-bottom: 7px;
+
+    color: #64748b;
+    font-size: 14px;
+}
+
+.location-line i {
+    color: #6366f1;
+}
+
+.destination-information h1 {
+    margin: 0 0 12px;
+
+    color: #172033;
+
+    font-size: 36px;
+    line-height: 1.15;
+    font-weight: 800;
+}
+
+.description {
+    max-height: 105px;
+
+    margin-bottom: 18px;
+    padding-right: 7px;
+
+    color: #64748b;
+
+    font-size: 14px;
+    line-height: 1.75;
+
+    overflow-y: auto;
+}
+
+
+/* =========================================================
+   INFORMATION GRID
+========================================================= */
+
+.information-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 12px;
+}
+
+.info-card {
+    padding: 14px;
+
+    border-radius: 17px;
+
+    background:
+        rgba(255, 255, 255, 0.42);
+
+    box-shadow:
+        0 8px 24px rgba(31, 38, 135, 0.06),
+        inset 0 1px 0 rgba(255, 255, 255, 0.75);
+
+    transition:
+        transform 0.22s ease,
+        background 0.22s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-2px);
+
+    background:
+        rgba(255, 255, 255, 0.58);
+}
+
+.info-card-title {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    margin-bottom: 5px;
+
+    color: #64748b;
+
+    font-size: 11px;
+}
+
+.info-card-title i {
+    color: #6366f1;
+}
+
+.info-card-value {
+    color: #1e293b;
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   CATEGORY
+========================================================= */
+
+.category-section {
+    margin-top: 17px;
+}
+
+.category-section h3 {
+    margin: 0 0 9px;
+
+    color: #475569;
+
+    font-size: 13px;
+}
+
+.category-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.category-chip {
+    padding: 6px 11px;
+
+    border:
+        1px solid rgba(99, 102, 241, 0.12);
+
+    border-radius: 30px;
+
+    background:
+        rgba(99, 102, 241, 0.10);
+
+    color: #4f46e5;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    backdrop-filter: blur(10px);
+}
+
+
+/* =========================================================
+   MAP + GALLERY
+========================================================= */
+
+.location-photo-row {
+    display: grid;
+
+    grid-template-columns:
+        minmax(320px, 0.82fr)
+        minmax(430px, 1.18fr);
+
+    gap: 20px;
+
+    width: 100%;
+
+    margin-top: 22px;
+
+    align-items: stretch;
+}
+
+.map-section,
+.gallery-section {
+    min-width: 0;
+
+    height: 450px;
+
+    padding: 18px;
+
+    border-radius: 24px;
+}
+
+
+/* =========================================================
+   SECTION HEADING
+========================================================= */
+
+.section-heading {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 13px;
+}
+
+.section-eyebrow {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #6366f1;
+
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.section-heading h2 {
+    margin: 0;
+
+    color: #1e293b;
+
+    font-size: 19px;
+}
+
+.section-heading p {
+    margin: 3px 0 0;
+
+    color: #64748b;
+
+    font-size: 11px;
+}
+
+.photo-count {
+    flex-shrink: 0;
+
+    padding: 6px 10px;
+
+    border:
+        1px solid rgba(99, 102, 241, 0.12);
+
+    border-radius: 20px;
+
+    background:
+        rgba(99, 102, 241, 0.10);
+
+    color: #4f46e5;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   MAP
+========================================================= */
+
+.map-container {
+    width: 100%;
+    height: 295px;
+
+    overflow: hidden;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.65);
+
+    border-radius: 17px;
+
+    background: rgba(226, 232, 240, 0.50);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.75);
+}
+
+#destinationMap {
+    display: block;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    min-height: 0 !important;
+
+    border: 0;
+}
+
+.open-map-link {
+    display: inline-flex;
+
+    align-items: center;
+    gap: 7px;
+
+    margin-top: 9px;
+
+    color: #4f46e5;
+
+    text-decoration: none;
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   RELATED DESTINATIONS
+========================================================= */
+
+.gallery-section {
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   GALLERY SCROLL CONTAINER
+========================================================= */
+
+#destinationGallery {
+    display: grid !important;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr)) !important;
+
+    grid-auto-rows: 165px !important;
+
+    gap: 14px !important;
+
+    width: 100% !important;
+
+    height: 330px !important;
+    max-height: 330px !important;
+
+    margin: 0 !important;
+    padding: 4px !important;
+
+    box-sizing: border-box !important;
+
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+
+    align-content: start !important;
+
+    overscroll-behavior: contain;
+
+    -webkit-overflow-scrolling: touch;
+
+    scrollbar-width: thin;
+
+    scrollbar-color:
+        rgba(99, 102, 241, 0.45)
+        rgba(220, 225, 240, 0.30);
+}
+
+
+/* =========================================================
+   RELATED DESTINATION CARD
+========================================================= */
+
+#destinationGallery .gallery-item,
+#destinationGallery > div {
+    position: relative !important;
+
+    width: 100% !important;
+
+    height: 165px !important;
+    min-height: 165px !important;
+    max-height: 165px !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    box-sizing: border-box !important;
+
+    overflow: hidden !important;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.72) !important;
+
+    border-radius: 17px !important;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.60),
+            rgba(241, 245, 249, 0.45)
+        ) !important;
+
+    box-shadow:
+        0 10px 25px rgba(31, 38, 135, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.80) !important;
+
+    transition:
+        transform 0.22s ease,
+        box-shadow 0.22s ease;
+}
+
+#destinationGallery .gallery-item:hover,
+#destinationGallery > div:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 15px 30px rgba(31, 38, 135, 0.13),
+        inset 0 1px 0 rgba(255, 255, 255, 0.90) !important;
+}
+
+
+/* =========================================================
+   RELATED DESTINATION IMAGE
+========================================================= */
+
+#destinationGallery .gallery-item img,
+#destinationGallery > div img {
+    display: block !important;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    min-width: 0 !important;
+    min-height: 0 !important;
+
+    max-width: 100% !important;
+    max-height: 100% !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    box-sizing: border-box !important;
+
+    object-fit: contain !important;
+    object-position: center !important;
+
+    background:
+        rgba(248, 250, 252, 0.55) !important;
+}
+
+
+/* =========================================================
+   GALLERY CAPTION
+========================================================= */
+
+#destinationGallery .gallery-caption,
+#destinationGallery > div > div {
+    position: absolute !important;
+
+    left: 7px !important;
+    right: 7px !important;
+    bottom: 7px !important;
+
+    z-index: 5 !important;
+
+    width: auto !important;
+    max-width:
+        calc(100% - 14px) !important;
+
+    padding: 6px 9px !important;
+
+    box-sizing: border-box !important;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.15) !important;
+
+    border-radius: 9px !important;
+
+    background:
+        rgba(15, 23, 42, 0.58) !important;
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    color: #fff !important;
+
+    font-size: 10px !important;
+    line-height: 1.2 !important;
+    font-weight: 600 !important;
+
+    white-space: nowrap !important;
+
+    overflow: hidden !important;
+
+    text-overflow: ellipsis !important;
+}
+
+
+/* =========================================================
+   GALLERY SCROLLBAR
+========================================================= */
+
+#destinationGallery::-webkit-scrollbar {
+    width: 7px;
+}
+
+#destinationGallery::-webkit-scrollbar-track {
+    background:
+        rgba(226, 232, 240, 0.28);
+
+    border-radius: 10px;
+}
+
+#destinationGallery::-webkit-scrollbar-thumb {
+    background:
+        rgba(99, 102, 241, 0.42);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.35);
+
+    border-radius: 10px;
+}
+
+#destinationGallery::-webkit-scrollbar-thumb:hover {
+    background:
+        rgba(99, 102, 241, 0.65);
+}
+
+
+/* =========================================================
+   TRANSPORT
+========================================================= */
+
+.transport-section {
+    margin-top: 22px;
+
+    padding: 20px;
+
+    border-radius: 24px;
+}
+
+.transport-container {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(150px, 1fr)
+        );
+
+    gap: 13px;
+}
+
+.transport-card {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 15px;
+
+    border-radius: 17px;
+
+    background:
+        rgba(255, 255, 255, 0.40);
+
+    box-shadow:
+        0 8px 22px rgba(31, 38, 135, 0.06),
+        inset 0 1px 0 rgba(255, 255, 255, 0.80);
+}
+
+.transport-icon {
+    width: 42px;
+    height: 42px;
+
+    flex-shrink: 0;
+
+    display: grid;
+    place-items: center;
+
+    border:
+        1px solid rgba(99, 102, 241, 0.12);
+
+    border-radius: 13px;
+
+    background:
+        rgba(99, 102, 241, 0.10);
+
+    color: #4f46e5;
+}
+
+.transport-name {
+    color: #334155;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   HOTELS
+========================================================= */
+
+.hotels-section {
+    margin-top: 22px;
+
+    padding: 20px;
+
+    border-radius: 24px;
+}
+
+.hotels-container {
+    display: grid !important;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr)) !important;
+
+    gap: 18px !important;
+
+    align-items: start;
+}
+
+.hotel-card {
+    min-width: 0;
+
+    overflow: hidden !important;
+
+    border-radius: 19px !important;
+
+    transition:
+        transform 0.22s ease,
+        box-shadow 0.22s ease;
+}
+
+.hotel-card:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 18px 40px rgba(31, 38, 135, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.90);
+}
+
+
+/* =========================================================
+   HOTEL IMAGE
+========================================================= */
+
+.hotel-image-wrap {
+    width: 100%;
+    height: 210px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    background:
+        rgba(248, 250, 252, 0.50);
+}
+
+.hotel-image,
+.hotel-card img {
+    display: block !important;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    max-width: none !important;
+    max-height: none !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    object-fit: contain !important;
+    object-position: center !important;
+
+    background: transparent !important;
+}
+
+
+/* =========================================================
+   HOTEL CONTENT
+========================================================= */
+
+.hotel-content {
+    padding: 14px 16px 17px;
+}
+
+.hotel-content h3 {
+    margin: 0 0 7px;
+
+    color: #1e293b;
+
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.hotel-address {
+    margin: 0;
+
+    color: #64748b;
+
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.hotel-rating {
+    margin-top: 8px;
+
+    color: #f59e0b;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.hotel-price {
+    margin-top: 8px;
+
+    color: #334155;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   EXTRA
+========================================================= */
+
+.destination-extra {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 15px;
+
+    margin-top: 22px;
+}
+
+.extra-card {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 15px;
+
+    border-radius: 18px;
+}
+
+
+/* =========================================================
+   RESPONSIVE - 1200px
+========================================================= */
+
+@media (max-width: 1200px) {
+
+    .destination-area {
+        width: calc(100% - 240px);
+
+        margin-left: 240px;
+
+        padding: 20px;
+    }
+
+    .destination-top {
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+    .hotels-container {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr)) !important;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE - 900px
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .destination-area {
+        width: 100%;
+
+        margin-left: 0;
+
+        padding: 16px;
+    }
+
+    .destination-top {
+        grid-template-columns: 1fr;
+    }
+
+    .selected-image-container {
+        height: 280px;
+        min-height: 280px;
+    }
+
+    .location-photo-row {
+        grid-template-columns: 1fr;
+    }
+
+    .map-section,
+    .gallery-section {
+        height: 360px;
+
+        min-height: 360px;
+    }
+
+    #destinationGallery {
+        height: 300px !important;
+        max-height: 300px !important;
+
+        overflow-y: auto !important;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE - 700px
+========================================================= */
+
+@media (max-width: 700px) {
+
+    #destinationGallery {
+        grid-template-columns:
+            1fr !important;
+
+        grid-auto-rows:
+            150px !important;
+
+        height: 300px !important;
+        max-height: 300px !important;
+
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+    }
+
+    #destinationGallery .gallery-item,
+    #destinationGallery > div {
+        height: 150px !important;
+
+        min-height: 150px !important;
+        max-height: 150px !important;
+    }
+
+    .hotels-container {
+        grid-template-columns:
+            1fr !important;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE - 650px
+========================================================= */
+
+@media (max-width: 650px) {
+
+    .destination-area {
+        padding: 12px;
+    }
+
+    .information-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hotels-container {
+        grid-template-columns:
+            1fr !important;
+    }
+
+    .destination-extra {
+        grid-template-columns: 1fr;
+    }
+
+    .destination-information h1 {
+        font-size: 28px;
+    }
+
+    .selected-image-container {
+        height: 240px;
+        min-height: 240px;
+    }
+
+    .gallery-section {
+        height: 360px;
+        min-height: 360px;
+
+        overflow: hidden;
+    }
+
+    #destinationGallery {
+        height: 300px !important;
+        max-height: 300px !important;
+
+        grid-template-columns:
+            1fr !important;
+
+        grid-auto-rows:
+            150px !important;
+
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+    }
+
+    #destinationGallery .gallery-item,
+    #destinationGallery > div {
+        height: 150px !important;
+
+        min-height: 150px !important;
+        max-height: 150px !important;
+    }
+}
+
+/* =========================================================
+   RECOMMENDATION SECTION
+========================================================= */
+
+.recommendation-section {
+    margin-top: 22px;
+    padding: 20px;
+    border-radius: 24px;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.70);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.68),
+            rgba(255, 255, 255, 0.38)
+        );
+
+    backdrop-filter: blur(22px) saturate(150%);
+    -webkit-backdrop-filter: blur(22px) saturate(150%);
+
+    box-shadow:
+        0 20px 50px rgba(31, 38, 135, 0.10),
+        inset 0 1px 0 rgba(255, 255, 255, 0.80);
+}
+
+
+/* =========================================================
+   RECOMMENDATION CONTENT
+========================================================= */
+
+.recommendation-content {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.35fr)
+        minmax(300px, 0.65fr);
+
+    gap: 20px;
+
+    align-items: stretch;
+}
+
+
+/* =========================================================
+   WHY RECOMMENDED
+========================================================= */
+
+.recommendation-reasons {
+    padding: 18px;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.65);
+
+    border-radius: 20px;
+
+    background:
+        rgba(255, 255, 255, 0.38);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.75);
+}
+
+
+.recommendation-score {
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    margin-bottom: 20px;
+}
+
+
+.score-circle {
+    width: 82px;
+    height: 82px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6366f1,
+            #06b6d4
+        );
+
+    box-shadow:
+        0 10px 25px rgba(99, 102, 241, 0.22);
+}
+
+
+.score-circle span {
+    width: 68px;
+    height: 68px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.90);
+
+    color: #4f46e5;
+
+    font-size: 18px;
+
+    font-weight: 800;
+}
+
+
+.recommendation-score h3 {
+    margin: 0 0 5px;
+
+    color: #1e293b;
+
+    font-size: 17px;
+}
+
+
+.recommendation-score p {
+    margin: 0;
+
+    color: #64748b;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   RECOMMENDATION REASONS
+========================================================= */
+
+.recommendation-reason-list {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 10px;
+}
+
+
+.recommendation-reason {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 12px;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.65);
+
+    border-radius: 14px;
+
+    background:
+        rgba(255, 255, 255, 0.40);
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.recommendation-reason:hover {
+    transform: translateY(-2px);
+
+    background:
+        rgba(255, 255, 255, 0.58);
+}
+
+
+.reason-icon {
+    width: 36px;
+    height: 36px;
+
+    flex-shrink: 0;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 11px;
+
+    background:
+        rgba(99, 102, 241, 0.10);
+
+    color: #4f46e5;
+}
+
+
+.reason-text {
+    min-width: 0;
+}
+
+
+.reason-title {
+    margin: 0 0 3px;
+
+    color: #334155;
+
+    font-size: 12px;
+
+    font-weight: 700;
+}
+
+
+.reason-description {
+    margin: 0;
+
+    color: #64748b;
+
+    font-size: 10px;
+
+    line-height: 1.4;
+}
+
+
+/* =========================================================
+   PIE CHART
+========================================================= */
+
+.recommendation-chart-card {
+    min-width: 0;
+
+    padding: 18px;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.65);
+
+    border-radius: 20px;
+
+    background:
+        rgba(255, 255, 255, 0.38);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.75);
+}
+
+
+.recommendation-chart-card h3 {
+    margin: 0 0 3px;
+
+    color: #1e293b;
+
+    font-size: 16px;
+}
+
+
+.recommendation-chart-card > p {
+    margin: 0 0 10px;
+
+    color: #64748b;
+
+    font-size: 11px;
+}
+
+
+.pie-chart-wrapper {
+    width: 100%;
+
+    max-width: 260px;
+
+    height: 220px;
+
+    margin: 0 auto;
+}
+
+
+#recommendationPieChart {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+
+.chart-legend {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 7px;
+
+    margin-top: 8px;
+}
+
+
+.chart-legend-item {
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    color: #475569;
+
+    font-size: 10px;
+}
+
+
+.chart-legend-dot {
+    width: 9px;
+    height: 9px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .recommendation-content {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .recommendation-reason-list {
+        grid-template-columns: 1fr;
+    }
+
+    .recommendation-score {
+        align-items: flex-start;
+    }
+
+    .chart-legend {
+        grid-template-columns: 1fr;
+    }
+
+}

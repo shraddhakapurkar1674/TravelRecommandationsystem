@@ -1,0 +1,452 @@
+
+:root {
+    --purple-primary: #6346f6;
+    --purple-hover: #4f32e3;
+    --purple-gradient: linear-gradient(135deg, #6346f6 0%, #8b5cf6 100%);
+    --navy-footer: #0a1128;
+    --text-dark: #1e293b;
+    --text-muted: #64748b;
+}
+ 
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: var(--text-dark);
+    background-color: #ffffff;
+    font-size: 0.92rem;
+    overflow-x: hidden;
+}
+ 
+/* Typography Scale */
+.section-title { font-size: 1.85rem; font-weight: 800; letter-spacing: -0.5px; }
+.hero-title { font-size: 3rem; line-height: 1.18; letter-spacing: -1px; }
+.hero-subtitle { font-size: 1.02rem; color: #334155; line-height: 1.6; }
+ 
+/* Navbar - Compact & Fits all items */
+.custom-navbar {
+    background: rgba(255, 255, 255, 0.96) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+    transition: all 0.3s ease;
+    padding-top: 0.4rem !important;
+    padding-bottom: 0.4rem !important;
+    z-index: 1030;
+}
+ 
+.custom-nav-links .nav-link {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #334155 !important;
+    padding-left: 0.65rem !important;
+    padding-right: 0.65rem !important;
+}
+ 
+.custom-nav-links .nav-link:hover,
+.custom-nav-links .nav-link.active {
+    color: var(--purple-primary) !important;
+}
+ 
+.bg-purple { background-color: var(--purple-primary) !important; }
+ 
+/* Hero Section */
+.hero-section {
+    position: relative;
+    background-image: url('../images/background.webp');
+    background-position: center 30%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 85vh;
+    padding-top: 7rem;
+    padding-bottom: 4rem;
+    display: flex;
+    align-items: center;
+}
+ 
+.hero-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg, 
+        rgba(255, 255, 255, 0.88) 0%, 
+        rgba(255, 255, 255, 0.6) 50%, 
+        rgba(255, 255, 255, 0.05) 90%
+    );
+    z-index: 1;
+}
+ 
+.hero-section .container { position: relative; z-index: 2; }
+ 
+/* Buttons & Gradients */
+.text-purple-gradient {
+    background: var(--purple-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+ 
+.btn-primary-gradient {
+    background: var(--purple-gradient);
+    color: #ffffff !important;
+    border: none;
+    transition: all 0.25s ease;
+}
+ 
+.btn-primary-gradient:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(99, 70, 246, 0.35);
+}
+ 
+.text-purple { color: var(--purple-primary) !important; }
+ 
+/* Floating Search Box */
+.search-floating-card {
+    background: #ffffff;
+    box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
+    border: 1px solid #e2e8f0 !important;
+}
+ 
+.search-input-group {
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    transition: border-color 0.2s ease;
+}
+ 
+.search-input-group:focus-within {
+    border-color: var(--purple-primary);
+}
+ 
+/* Feature Icons with Vibrant Colored Backgrounds */
+.feature-box {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    border: 1px solid #f1f5f9;
+}
+ 
+.feature-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08) !important;
+}
+ 
+.icon-circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+}
+ 
+/* Bright Colored Background Classes for Why Choose Section */
+.icon-bg-blue { background-color: #2563eb; color: #ffffff; }
+.icon-bg-orange { background-color: #f97316; color: #ffffff; }
+.icon-bg-purple { background-color: #7c3aed; color: #ffffff; }
+.icon-bg-teal { background-color: #0d9488; color: #ffffff; }
+.icon-bg-yellow { background-color: #eab308; color: #ffffff; }
+.icon-bg-pink { background-color: #ec4899; color: #ffffff; }
+ 
+/* Destination Cards */
+.destination-card {
+    position: relative;
+    height: 290px;
+    border-radius: 1rem;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+ 
+.destination-card:hover { transform: translateY(-5px); }
+ 
+.destination-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+ 
+.destination-card:hover img { transform: scale(1.06); }
+ 
+.destination-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 30%, rgba(0,0,0,0.85) 100%);
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+ 
+.rating-badge {
+    align-self: flex-end;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(4px);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 6px;
+}
+ 
+/* ========================================================
+   TRAVELLER TYPE CARDS (single, de-duplicated definition)
+   ======================================================== */
+.traveller-section {
+    background-color: #f8fafc;
+    position: relative;
+    overflow: hidden;
+}
+ 
+.traveller-swiper {
+    padding: 10px 10px 45px 10px !important; /* Space for pagination dots */
+}
+ 
+.traveller-card {
+    cursor: pointer;
+    background: #ffffff;
+    border-radius: 1.25rem;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid #e2e8f0;
+    height: 100%;
+}
+ 
+.traveller-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 30px rgba(99, 70, 246, 0.12) !important;
+    border-color: #cbd5e1;
+}
+ 
+.traveller-card .img-wrapper {
+    position: relative;
+    overflow: hidden;
+    height: 150px;
+}
+ 
+.traveller-card img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+ 
+.traveller-card:hover img {
+    transform: scale(1.08);
+}
+ 
+.traveller-swiper .swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+    background: #cbd5e1;
+    opacity: 1;
+    transition: all 0.3s ease;
+}
+ 
+.traveller-swiper .swiper-pagination-bullet-active {
+    background: var(--purple-primary);
+    width: 24px;
+    border-radius: 4px;
+}
+ 
+.swiper-button-next-custom,
+.swiper-button-prev-custom {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    color: var(--purple-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    border: 1px solid #e2e8f0;
+}
+ 
+.swiper-button-next-custom:hover,
+.swiper-button-prev-custom:hover {
+    background: var(--purple-primary);
+    color: #ffffff;
+    transform: scale(1.05);
+}
+ 
+/* ========================================================
+   BUILD YOUR COMPLETE TRIP - STEP BUILDER
+   Plain flexbox (NOT Bootstrap's row/col grid) so the 5
+   circles are guaranteed to sit in one horizontal line with
+   a single connector line running through their centers,
+   and wrap cleanly (line hidden) on small screens.
+   ======================================================== */
+.trip-build-container {
+    position: relative;
+    padding: 20px 0;
+}
+ 
+.trip-build-steps {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative;
+    z-index: 2;
+    row-gap: 2.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+ 
+.trip-build-step {
+    flex: 1 1 150px;
+    max-width: 220px;
+    min-width: 140px;
+    text-align: center;
+    padding: 0 10px;
+}
+ 
+.step-circle {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    margin: 0 auto 1rem auto;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+    transition: transform 0.3s ease;
+}
+ 
+.step-circle:hover {
+    transform: scale(1.1);
+}
+ 
+/* Animated dashed connector line running through the exact
+   vertical center of the 72px circles (20px container
+   padding-top + 36px half-circle-height = 56px). Only shown
+   once there is enough width for all 5 steps in a single row
+   - below that, .trip-build-steps wraps and the line would
+   no longer line up, so it's hidden instead of misplaced. */
+.step-connector-line {
+    position: absolute;
+    top: 56px;
+    left: 9%;
+    right: 9%;
+    height: 3px;
+    z-index: 1;
+    background-image: linear-gradient(90deg, var(--purple-primary) 50%, transparent 50%);
+    background-size: 16px 3px;
+    background-repeat: repeat-x;
+    animation: dashFlow 1.2s linear infinite;
+    display: none;
+}
+ 
+@media (min-width: 992px) {
+    .step-connector-line { display: block; }
+}
+ 
+@keyframes dashFlow {
+    from { background-position: 0 0; }
+    to { background-position: 32px 0; }
+}
+ 
+/* ========================================================
+   FOOTER
+   ======================================================== */
+.footer-dark {
+    background-color: var(--navy-footer);
+    color: #cbd5e1;
+}
+ 
+.footer-dark h6 {
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 1.2rem;
+}
+ 
+.footer-dark p, 
+.footer-dark span {
+    color: #cbd5e1 !important;
+}
+ 
+.footer-dark .footer-tagline {
+    color: #a5b4fc !important;
+    font-weight: 600;
+}
+ 
+.footer-dark a {
+    color: #cbd5e1;
+    text-decoration: none;
+    transition: color 0.2s ease;
+    font-size: 0.86rem;
+}
+ 
+.footer-dark a:hover {
+    color: #ffffff;
+}
+ 
+.social-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: #1e293b;
+    color: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    transition: all 0.25s ease;
+}
+ 
+.social-icon:hover {
+    background: var(--purple-primary);
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+ 
+/* Popular Destinations / Traveller cards - loading skeleton while fetching from the API */
+.skeleton-card {
+    height: 290px;
+    border-radius: 1rem;
+    background: linear-gradient(100deg, #eef1f6 30%, #f8f9fc 50%, #eef1f6 70%);
+    background-size: 200% 100%;
+    animation: skeletonShine 1.4s ease-in-out infinite;
+}
+ 
+.skeleton-traveller-card {
+    height: 210px;
+    border-radius: 1rem;
+    background: linear-gradient(100deg, #eef1f6 30%, #f8f9fc 50%, #eef1f6 70%);
+    background-size: 200% 100%;
+    animation: skeletonShine 1.4s ease-in-out infinite;
+}
+ 
+@keyframes skeletonShine {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+ 
+/* Watch Demo modal video wrapper - keeps a responsive 16:9 ratio */
+.demo-video-wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 0.75rem;
+    background: #000;
+}
+ 
+.demo-video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+ 
+
+
